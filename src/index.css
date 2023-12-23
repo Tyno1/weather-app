@@ -58,16 +58,13 @@ body {
 .inner-menu {
   width: 20%;
   background-color: rgba(22, 26, 48, 0.9);
-  height: 100;
+  height: 100vh;
   padding: 60px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.inner-menu .location-1,
-.location-2,
-.location-3,
-.location-4 {
+.inner-menu .location-1 {
   background-color: rgba(182, 187, 196, 0.2);
   width: 90%;
   height: 80px;
@@ -77,6 +74,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.inner-menu .other-locations {
+    width: 100%;
 }
 .inner-menu .location-1 .location-name {
   display: flex;

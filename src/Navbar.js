@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { useMyContext } from "./contexts/Provider";
 
-const Navbar = ({ text, setText, onSubmit }) => {
+const Navbar = ({ onSubmit }) => {
   const [newLocations, setNewLocations] = useState([]);
   const [weatherDataUserSpecified, setWeatherDataUserSpecified] = useState({});
+  const [prevText, setPrevText] = useState("");
+
+  const { text, setText } = useMyContext() || {};
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -11,18 +15,21 @@ const Navbar = ({ text, setText, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //fetching data from weatherApi using name typed in the input tag as "q"`
-    fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${text}&days=10&aqi=yes&alerts=yes`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.error) {
-             setWeatherDataUserSpecified(data);
-        onSubmit()
-        }
-      })
-      .catch((err) => console.log(err))
+    if (text != prevText) {
+      //fetching data from weatherApi using name typed in the input tag as "q"`
+      fetch(
+        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${text}&days=10&aqi=yes&alerts=yes`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.error) {
+            setWeatherDataUserSpecified(data);
+            onSubmit();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+    setPrevText(text);
   };
 
   useEffect(() => {
@@ -44,19 +51,21 @@ const Navbar = ({ text, setText, onSubmit }) => {
   }, [weatherDataUserSpecified]);
 
   return (
-    <nav className="navbar">
-      <div className="app-name">THE WEDA APP</div>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="search"
-          onChange={handleChange}
-          value={text}
-          type="text"
-          placeholder="Search"
-        />
-        <button type="submit">search</button>
-      </form>
-    </nav>
+    <div className="color-fade">
+      <nav className="navbar">
+        <div className="app-name">THE WEDA APP</div>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="search"
+            onChange={handleChange}
+            value={text}
+            type="text"
+            placeholder="Input location here"
+          />
+          <button type="submit">search</button>
+        </form>
+      </nav>
+    </div>
   );
 };
 

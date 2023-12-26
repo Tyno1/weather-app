@@ -1,6 +1,10 @@
-import Navbar from "./Navbar";
+import { useMyContext } from "./contexts/Provider";
 
-const DetailsSpecified = ({selectedLocation}) => {
+const DetailsSpecified = () => {
+    const {
+        selectedLocation
+      } = useMyContext();
+
     return ( 
         <div className="main-display">
             <div className="section-1">

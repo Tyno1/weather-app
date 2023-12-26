@@ -6,15 +6,15 @@ import { useMyContext } from "./contexts/Provider";
 import Navbar from "./Navbar";
 
 function App() {
-  const {
-    text,
-    setText,
-    getLocation,
-  } = useMyContext();
+  const { text, setText, getLocation, isLoading } = useMyContext();
+
+  console.log("isLoading:", isLoading);
 
   return (
     <div className="App">
       <Navbar setText={setText} text={text} onSubmit={getLocation} />
+     {/* {isLoading? 
+     <div style={{fontSize: 500}}>data is laoding</div>: */}
       <div className="content">
         <AppFrame />
         <Routes>

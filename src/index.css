@@ -9,10 +9,28 @@ a {
   text-decoration: none;
 }
 
+.App {
+  background-image: url(./images/mountain_landscape17_generated.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow-y: hidden;
+}
+.content {
+  height: 100vh;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgba(22, 26, 48, 0.6);
+  overflow: auto;
+}
+
 body {
   padding: 0px;
   margin: 0px;
-  /* background-color: rgb(22, 26, 48); */
+  min-height: 100vh;
 }
 .color-fade {
   z-index: 100;
@@ -47,17 +65,17 @@ body {
   background-color: rgba(22, 26, 48, 0);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
-.navbar form button{
-    color: rgb(182, 187, 196);
-    background-color: rgba(22, 26, 48, 0);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    border: none;
-    margin-left: 12px;
-    padding: 5px 10px;
-    border-radius: 8px;
+.navbar form button {
+  color: rgb(182, 187, 196);
+  background-color: rgba(22, 26, 48, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-left: 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
 }
 
-.navbar form button:hover{
+.navbar form button:hover {
   background-color: rgba(22, 26, 48, 0.5);
 }
 ::placeholder {
@@ -67,29 +85,7 @@ body {
 .navbar input:focus {
   outline: none;
 }
-.App {
-  background-image: url(./images/mountain_landscape17_generated.jpg);
-  background-position: left;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-/* .container {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: rgba(22, 26, 48, 0.6);
-} */
 
-.content {
-  padding-top: 70px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  background-color: rgba(22, 26, 48, 0.6);
-}
 
 .inner-menu {
   position: fixed;
@@ -151,6 +147,7 @@ p {
 
 .main-display {
   margin-left: auto;
+  margin-right: 30px;
   width: 80%;
   height: 100%;
 }
@@ -172,6 +169,7 @@ p {
 }
 .section-2 .current-forecast {
   height: 200px;
+  width: 100%;
   background-color: rgba(22, 26, 48, 0.5);
   border-radius: 30px;
   padding: 20px 30px;
@@ -218,14 +216,14 @@ p {
 
 .section-2 .section-2b {
   width: 100%;
-  height: 300px;
+  height: 400px;
   display: flex;
   flex-direction: row;
 }
 .section-2 .section-2b .ten-day-forecast {
-  width: 35%;
+  width: 45%;
   margin-top: 20px;
-  height: 70%;
+  height: 100%;
   background-color: rgba(22, 26, 48, 0.5);
   border-radius: 30px;
   padding: 20px 30px;
@@ -268,13 +266,7 @@ p {
   width: 100%;
 }
 
-
-  .section-2
-  .section-2b
-  .ten-day-forecast
-  .scroller
-  .days
-  .icon-container {
+.section-2 .section-2b .ten-day-forecast .scroller .days .icon-container {
   width: 40px;
   height: 40px;
   padding: 20px 0px;
@@ -282,15 +274,13 @@ p {
 .section-2b .others {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   width: 50%;
   height: 100%;
   margin-top: 20px;
   margin-left: 20px;
 }
-.section-2b .others .two,
-.one,
-.two {
+.section-2b .others .one {
   height: 40%;
   width: 100%;
   background-color: rgba(22, 26, 48, 0.5);
@@ -299,5 +289,29 @@ p {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+}
+.section-2b .others .two {
+  margin-top: 20px;
+  height: 40%;
+  width: 100%;
+  background-color: rgba(22, 26, 48, 0.5);
+  border-radius: 30px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.section-2b .others .one,
+.two p {
+  font-size: 40px;
+}
+
+.section-2b .others .feels {
+  margin: 0px 50px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid rgba(182, 187, 196, 0.3);
 }

@@ -7,6 +7,7 @@ const Provider = ({ children }) => {
   const [weatherDataCurrent, setWeatherDataCurrent] = useState(null);
   const [text, setText] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null); //resolve this
+  const [isLoading, setIsLoading] = useState(false);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -16,6 +17,7 @@ const Provider = ({ children }) => {
     }
   };
   const showPosition = (position) => {
+    setIsLoading(true)
     const currentCoords = `${position.coords.latitude},${position.coords.longitude}`;
     console.log(currentCoords);
     setCoords(currentCoords);
@@ -27,6 +29,7 @@ const Provider = ({ children }) => {
       .then((data) => {
         console.log(data); // Confirm that it's a valid location
         setWeatherDataCurrent(data);
+        setIsLoading(false)
       });
   };
 
@@ -40,6 +43,7 @@ const Provider = ({ children }) => {
     getLocation,
     setCoords,
     coords,
+    isLoading
   };
 
   useEffect(() => {

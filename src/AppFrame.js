@@ -3,19 +3,14 @@ import { Link } from "react-router-dom";
 import { useMyContext } from "./contexts/Provider";
 
 const AppFrame = () => {
-  
   const myLocations = JSON.parse(localStorage.getItem("newLocations"));
-  const {
-    weatherDataCurrent,
-    setSelectedLocation,
-  } = useMyContext();
-
+  const { weatherDataCurrent, setSelectedLocation } = useMyContext();
 
   return (
     <div className="inner-menu">
       <div className="scroller">
-      {weatherDataCurrent && (
-          <div style={{"width": "100%"}}>
+        {weatherDataCurrent && (
+          <div style={{ width: "100%" }}>
             <Link to={"/"}>
               <div className="location-1">
                 <div className="location-name">
@@ -89,7 +84,7 @@ const AppFrame = () => {
               </div>
             </Link>
           </div>
-      )}
+        )}
       </div>
     </div>
   );
